@@ -28,6 +28,11 @@ Sempre que o bruto permitir, **hibridizar educação com humor**.
 - Hook verbal + título na tela nos 2 primeiros segundos.
 - Lettering **Helvetica Neue Condensed Black** caps branco com sombra
   (títulos 104px, ênfases 116 a 138px em 1080x1920).
+  - Fallback enquanto a fonte original não vier do Mac (proprietária): **Anton**
+    é a substituta principal (grotesca condensada black, caps); alternativas
+    **Archivo Black** (não condensada) e **Oswald** (pesos variáveis).
+    Arquivos OFL em `assets/fonts/` do repo, instalados em
+    `~/eita-reels-studio/assets/fonts/` e no fontconfig do sistema.
 - Acento amarelo **#FFE234** estilo marca-texto nas ênfases.
 - Legendas frase a frase em branco (não karaokê), terço inferior.
 - Cortes secos, sem transições.

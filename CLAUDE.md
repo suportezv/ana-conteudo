@@ -45,9 +45,13 @@ texto público; credencial sempre "Neurocientista criadora do método EITA").
 
 ## Pendências conhecidas (exigem ação humana ou rede)
 
-- `ELEVENLABS_API_KEY` real no `.env` do video-use. Neste ambiente remoto,
-  `api.elevenlabs.io` está bloqueada pela política de rede — transcrição e SFX
-  só funcionam após liberar o domínio ou rodando em máquina local.
-- OAuth do Metricool (browser, primeira sessão com o MCP ativo).
-- Fonte Helvetica Neue Condensed Black em `~/eita-reels-studio/assets/fonts/`
-  (proprietária; copiar do Mac original ou da máquina da colega).
+- `ELEVENLABS_API_KEY` já gravada em `~/video-editor/video-use/.env`, mas
+  `api.elevenlabs.io` está bloqueada pela política de rede deste ambiente —
+  transcrição e SFX só funcionam após liberar o domínio na network policy do
+  ambiente (claude.ai/code) ou rodando em máquina local.
+- OAuth do Metricool (browser, primeira sessão com o MCP ativo; ou conectar como
+  conector custom em claude.ai/settings/connectors com a URL
+  https://ai.metricool.com/mcp).
+- Fonte Helvetica Neue Condensed Black (proprietária; copiar do Mac original).
+  Enquanto isso, fallback OFL instalado: **Anton** (principal), Archivo Black e
+  Oswald — em `assets/fonts/` do repo e no fontconfig.
