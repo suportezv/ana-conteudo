@@ -29,3 +29,5 @@ Este repositório é o **EITA Reels Studio**: edição e agendamento de reels pa
 - video-use precisa do patch `patches/video-use-is-portrait-source.patch` (senão vertical vira paisagem).
 - Metricool MCP: sem delete (cancelar = update draft:true; update devolve id novo); mídia por URL pública (Supabase bucket público funciona).
 - Mac: usar ffmpeg-full keg-only com PATH explícito. Linux: ffmpeg do apt já serve.
+- Cloud: conector Drive só baixa arquivos pequenos (3,4 MB ok; 7,7 MB derruba a sessão do MCP) e o proxy do container bloqueia drive.google.com. Para trazer um bruto: deixar o arquivo com link público no Drive e importar com Kairogen `download_audio_from_url` usando `https://drive.google.com/uc?export=download&id=<ID>` (o binário chega salvo em disco). Testado com vídeo de 7,4 MB.
+- Cloud: a env var `ELEVENLABS_API_KEY` do ambiente contém um key ID (64 hex), não a chave da API. Scribe exige chave `sk_...` de 51 caracteres. Corrigir o valor na configuração do environment antes de transcrever.
