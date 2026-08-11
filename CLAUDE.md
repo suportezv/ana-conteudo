@@ -8,6 +8,11 @@ texto público; credencial sempre "Neurocientista criadora do método EITA").
 
 ## Layout da máquina (recriar se o container for novo)
 
+Num container novo, rodar `bash scripts/setup-studio.sh` (idempotente): instala
+ffmpeg, clona e prepara video-use/hyperframes, aplica o patch, registra skills,
+instala fontes e grava o `.env` a partir da env var `ELEVENLABS_API_KEY` (se o
+ambiente do claude.ai/code tiver essa variável configurada).
+
 - `~/eita-reels-studio/` — working dir do estúdio: `FRAMEWORK.md` (symlink para o
   deste repo), `projects/` (um subdiretório por vídeo), `assets/fonts/`.
 - `~/video-editor/video-use` — editor conversacional (clone de
