@@ -26,8 +26,11 @@ texto público; credencial sempre "Neurocientista criadora do método EITA").
 
 - Conta da agência: suporte@mentoravirtual.com.br
 - Metricool: marca **anaclaudia.eita**, **blog_id 6707687**, timezone
-  America/Sao_Paulo. MCP http em `https://ai.metricool.com/mcp` (configurado em
-  `~/.claude.json`; exige OAuth do usuário na primeira sessão).
+  America/Sao_Paulo. Conectado como conector custom da conta claude.ai
+  (URL `https://ai.metricool.com/mcp`), autorizado com
+  suporte@mentoravirtual.com.br — validado em 11/08/2026 via `getBrandSettings`
+  (Instagram anaclaudia.eita conectado). Cuidado: se o OAuth for refeito logado
+  em outra conta Metricool (ex.: suporte@zavi.ag), as marcas erradas aparecem.
 - Kairogen: plano Essential; modelo de vídeo liberado `veo3-1-lite` (12 créditos
   por clipe de 6s, 16:9/9:16, durações 4/6/8, 720p 24fps).
 - Google Drive: conector oficial do Claude, mesma conta; brutos ficam lá.
@@ -49,9 +52,6 @@ texto público; credencial sempre "Neurocientista criadora do método EITA").
   `api.elevenlabs.io` está bloqueada pela política de rede deste ambiente —
   transcrição e SFX só funcionam após liberar o domínio na network policy do
   ambiente (claude.ai/code) ou rodando em máquina local.
-- OAuth do Metricool (browser, primeira sessão com o MCP ativo; ou conectar como
-  conector custom em claude.ai/settings/connectors com a URL
-  https://ai.metricool.com/mcp).
 - Fonte Helvetica Neue Condensed Black (proprietária; copiar do Mac original).
   Enquanto isso, fallback OFL instalado: **Anton** (principal), Archivo Black e
   Oswald — em `assets/fonts/` do repo e no fontconfig.
