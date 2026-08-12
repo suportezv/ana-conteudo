@@ -1,0 +1,17 @@
+{
+  "language_code": "por",
+  "language_probability": 1.0,
+  "text": "[ru\u00eddo]",
+  "words": [
+    {
+      "text": "[ru\u00eddo]",
+      "start": 0.019,
+      "end": 4.88,
+      "type": "audio_event",
+      "speaker_id": "speaker_0",
+      "logprob": -0.01393034948656009
+    }
+  ],
+  "transcription_id": "QiXZDe9quu9kpodEbdtN",
+  "audio_duration_secs": 6.3786875
+}

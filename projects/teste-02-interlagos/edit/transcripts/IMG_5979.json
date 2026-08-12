@@ -1,0 +1,17 @@
+{
+  "language_code": "por",
+  "language_probability": 1.0,
+  "text": "[som de tr\u00e2nsito]",
+  "words": [
+    {
+      "text": "[som de tr\u00e2nsito]",
+      "start": 0.019,
+      "end": 4.139,
+      "type": "audio_event",
+      "speaker_id": "speaker_0",
+      "logprob": -0.11108635551361853
+    }
+  ],
+  "transcription_id": "5VgYq1cdPsvwKGhsFX9m",
+  "audio_duration_secs": 4.5013125
+}

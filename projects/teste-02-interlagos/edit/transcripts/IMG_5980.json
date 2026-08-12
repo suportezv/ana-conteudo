@@ -1,0 +1,17 @@
+{
+  "language_code": "por",
+  "language_probability": 1.0,
+  "text": "[som de carro]",
+  "words": [
+    {
+      "text": "[som de carro]",
+      "start": 0.019,
+      "end": 24.18,
+      "type": "audio_event",
+      "speaker_id": "speaker_0",
+      "logprob": -0.268158346414564
+    }
+  ],
+  "transcription_id": "Q9GByTtoF8mLIyal23vN",
+  "audio_duration_secs": 33.9413125
+}

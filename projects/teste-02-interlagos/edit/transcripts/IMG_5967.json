@@ -1,0 +1,17 @@
+{
+  "language_code": "por",
+  "language_probability": 1.0,
+  "text": "[som de interfer\u00eancia]",
+  "words": [
+    {
+      "text": "[som de interfer\u00eancia]",
+      "start": 0.099,
+      "end": 4.819,
+      "type": "audio_event",
+      "speaker_id": "speaker_0",
+      "logprob": -0.1804215914928306
+    }
+  ],
+  "transcription_id": "DTuA92FIm8yCLYOgUY5V",
+  "audio_duration_secs": 16.6613125
+}
