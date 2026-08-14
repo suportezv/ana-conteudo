@@ -1,0 +1,17 @@
+{
+  "language_code": "por",
+  "language_probability": 1.0,
+  "text": "[som de motor de carro]",
+  "words": [
+    {
+      "text": "[som de motor de carro]",
+      "start": 0.019,
+      "end": 17.119,
+      "type": "audio_event",
+      "speaker_id": "speaker_0",
+      "logprob": -0.10928547016969245
+    }
+  ],
+  "transcription_id": "iU0SdmGPOTsPQXMberOH",
+  "audio_duration_secs": 28.736
+}
