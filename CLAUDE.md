@@ -18,6 +18,7 @@ Este repositório é o **EITA Reels Studio**: edição e agendamento de reels pa
 ## IDs e contas
 
 - Metricool: conta da agência suporte@mentoravirtual.com.br, marca "anaclaudia.eita", **blog_id 6707687**, timezone America/Sao_Paulo. Melhor horário de publicação: 10h da manhã (pico em todos os dias).
+- **Regra de agendamento (todas as marcas da agência)**: sempre incluir TODOS os canais conectados da marca no post, exceto YouTube horizontal. YouTube entra como **Short** (`youtubeData: {type: "short", title, madeForKids: false}`); Instagram como REEL; Facebook como REEL; TikTok e demais com networkData padrão. Nunca publicar vídeo vertical como YouTube horizontal comum.
 - Kairogen: conta suporte@zavi.ag. Precisa plano Essential+ para vídeo; modelo `veo3-1-lite` no Essential.
 - ElevenLabs: chave em `.env` na raiz do video-use (transcrição Scribe + SFX/trilha). Voz clonada da Anaclaudia: voice_id `XsU4z9JE7JPZzkVPg4GW` (usar `eleven_multilingual_v2`, stability 0.5, similarity 0.8). Chave rotacionada em ago/2026 com escopos de TTS, sound-generation, STT e voices_read (a env var do environment deve conter a chave `sk_...` atual).
 
