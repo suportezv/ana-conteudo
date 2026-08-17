@@ -19,7 +19,7 @@ Este repositório é o **EITA Reels Studio**: edição e agendamento de reels pa
 
 - Metricool: conta da agência suporte@mentoravirtual.com.br, marca "anaclaudia.eita", **blog_id 6707687**, timezone America/Sao_Paulo. Melhor horário de publicação: 10h da manhã (pico em todos os dias).
 - Kairogen: conta suporte@zavi.ag. Precisa plano Essential+ para vídeo; modelo `veo3-1-lite` no Essential.
-- ElevenLabs: chave em `.env` na raiz do video-use (transcrição Scribe + SFX/trilha). Voz clonada da Anaclaudia: voice_id `XsU4z9JE7JPZzkVPg4GW` (usar `eleven_multilingual_v2`; a chave atual tem escopos de TTS, sound-generation e STT, mas não voices_read).
+- ElevenLabs: chave em `.env` na raiz do video-use (transcrição Scribe + SFX/trilha). Voz clonada da Anaclaudia: voice_id `XsU4z9JE7JPZzkVPg4GW` (usar `eleven_multilingual_v2`, stability 0.5, similarity 0.8). Chave rotacionada em ago/2026 com escopos de TTS, sound-generation, STT e voices_read (a env var do environment deve conter a chave `sk_...` atual).
 
 ## Gotchas essenciais (detalhe completo em FRAMEWORK.md)
 
