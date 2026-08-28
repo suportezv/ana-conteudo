@@ -104,6 +104,13 @@ Bucket público no Supabase funciona bem. Chaves novas `sb_secret_...` exigem he
 
 O catálogo do media-use exige login HeyGen (interativo). Sem ele, gerar bed via ElevenLabs sound-generation (endpoint `/v1/sound-generation`, máx ~22s) funciona muito bem.
 
+### Voz clonada da Anaclaudia (narração por IA)
+
+- ElevenLabs, voice_id **`XsU4z9JE7JPZzkVPg4GW`**, modelo `eleven_multilingual_v2`, settings aprovados: `stability` 0.5, `similarity_boost` 0.8. Amostra de referência aprovada pela equipe em `assets/voz/amostra-voz-clonada.mp3`.
+- Usos: narração sobre b-roll, CTA falado, refazer uma frase que saiu ruim no bruto, abertura de reel sem material de câmera.
+- Endpoint: `POST /v1/text-to-speech/XsU4z9JE7JPZzkVPg4GW?output_format=mp3_44100_128` com a chave do `.env` do video-use (a chave atual tem escopo de TTS, sound-generation e STT; não tem voices_read).
+- Cuidados: é a voz dela de verdade para o público. Todo texto narrado segue as regras inegociáveis (sem travessão, credencial correta) e o roteiro passa por aprovação antes de ir para um render final.
+
 ### Kairogen (b-roll por IA)
 
 - app.kairogen.ai; o plano Free bloqueia TODOS os modelos de vídeo. É preciso Essential ou superior.

@@ -1,0 +1,17 @@
+{
+  "language_code": "por",
+  "language_probability": 1.0,
+  "text": "[som de moto]",
+  "words": [
+    {
+      "text": "[som de moto]",
+      "start": 0.019,
+      "end": 3.879,
+      "type": "audio_event",
+      "speaker_id": "speaker_0",
+      "logprob": -0.2831244745035032
+    }
+  ],
+  "transcription_id": "gJMBQbmvfQfC5ObQzs2L",
+  "audio_duration_secs": 10.7093125
+}

@@ -18,8 +18,9 @@ Este repositório é o **EITA Reels Studio**: edição e agendamento de reels pa
 ## IDs e contas
 
 - Metricool: conta da agência suporte@mentoravirtual.com.br, marca "anaclaudia.eita", **blog_id 6707687**, timezone America/Sao_Paulo. Melhor horário de publicação: 10h da manhã (pico em todos os dias).
+- **Regra de agendamento (todas as marcas da agência)**: sempre incluir TODOS os canais conectados da marca no post, exceto YouTube horizontal. YouTube entra como **Short** (`youtubeData: {type: "short", title, madeForKids: false}`); Instagram como REEL; Facebook como REEL; TikTok e demais com networkData padrão. Nunca publicar vídeo vertical como YouTube horizontal comum.
 - Kairogen: conta suporte@zavi.ag. Precisa plano Essential+ para vídeo; modelo `veo3-1-lite` no Essential.
-- ElevenLabs: chave em `.env` na raiz do video-use (transcrição Scribe + SFX/trilha).
+- ElevenLabs: chave em `.env` na raiz do video-use (transcrição Scribe + SFX/trilha). Voz clonada da Anaclaudia: voice_id `XsU4z9JE7JPZzkVPg4GW` (usar `eleven_multilingual_v2`, stability 0.5, similarity 0.8). Chave rotacionada em ago/2026 com escopos de TTS, sound-generation, STT e voices_read (a env var do environment deve conter a chave `sk_...` atual).
 
 ## Gotchas essenciais (detalhe completo em FRAMEWORK.md)
 
@@ -29,3 +30,6 @@ Este repositório é o **EITA Reels Studio**: edição e agendamento de reels pa
 - video-use precisa do patch `patches/video-use-is-portrait-source.patch` (senão vertical vira paisagem).
 - Metricool MCP: sem delete (cancelar = update draft:true; update devolve id novo); mídia por URL pública (Supabase bucket público funciona).
 - Mac: usar ffmpeg-full keg-only com PATH explícito. Linux: ffmpeg do apt já serve.
+- Cloud, brutos do Drive: o environment "ana-conteudo" tem network Custom com `drive.google.com` e `drive.usercontent.google.com` liberados (configura-se no seletor de nuvem acima da caixa de mensagem em claude.ai/code, não nas Configurações). Download direto de arquivo público, qualquer tamanho: `curl -L "https://drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t"`. Testado com bruto de 265 MB. O conector MCP do Drive serve para busca e metadados; download por ele só até ~4 MB (7 MB derruba a sessão). Fallback para arquivo público pequeno: Kairogen `download_audio_from_url`.
+- Cloud: a env var `ELEVENLABS_API_KEY` do ambiente contém um key ID (64 hex), não a chave da API. Scribe exige chave `sk_...` de 51 caracteres. Corrigir o valor na configuração do environment antes de transcrever.
+- Cloud, mídia pública para o Metricool: para IMAGEM, a rota que funciona é URL direta do Drive público (`https://drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t`); raw.githubusercontent falha na normalização de imagem do Metricool. Para VÍDEO, o commit temporário na branch funciona (raw público, o Metricool copia para o CDN na hora, remover o arquivo depois; exige `git add -f` com autorização do usuário). Carrossel: lista de URLs em `media` na ordem dos slides, `instagramData {type: "POST"}`.

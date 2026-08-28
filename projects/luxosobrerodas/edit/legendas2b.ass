@@ -1,0 +1,28 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Legenda,Liberation Sans,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,3.5,2.5,2,60,60,240,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.28,0:00:01.76,Legenda,,0,0,0,,Léo, não dá pra levantar?
+Dialogue: 0,0:00:02.22,0:00:03.26,Legenda,,0,0,0,,Tem almofada aí.
+Dialogue: 0,0:00:03.22,0:00:05.10,Legenda,,0,0,0,,Almofada, ó a humilhação.
+Dialogue: 0,0:00:05.30,0:00:07.90,Legenda,,0,0,0,,Meu Deus do céu,\Nolha isso aqui, olha isso aqui.
+Dialogue: 0,0:00:08.12,0:00:08.86,Legenda,,0,0,0,,Vai, vai, vai, mais uma.
+Dialogue: 0,0:00:08.88,0:00:09.90,Legenda,,0,0,0,,Muita almofada, Léo.
+Dialogue: 0,0:00:10.30,0:00:11.60,Legenda,,0,0,0,,A situação.
+Dialogue: 0,0:00:11.90,0:00:12.95,Legenda,,0,0,0,,Não, tá bom já.
+Dialogue: 0,0:00:13.32,0:00:14.90,Legenda,,0,0,0,,Cadê o ar condicionado?
+Dialogue: 0,0:00:16.16,0:00:18.00,Legenda,,0,0,0,,Dá outra acelerada aí, Tony.
+Dialogue: 0,0:00:24.10,0:00:25.70,Legenda,,0,0,0,,Não, como é que tira ele aqui?
+Dialogue: 0,0:00:28.14,0:00:28.40,Legenda,,0,0,0,,Tá mal?
+Dialogue: 0,0:00:28.40,0:00:30.60,Legenda,,0,0,0,,Não, nada de mal,\Neu faço academia, meu filho.
+Dialogue: 0,0:00:30.80,0:00:33.10,Legenda,,0,0,0,,Ai, [bip], é duro.
+Dialogue: 0,0:00:33.84,0:00:35.60,Legenda,,0,0,0,,Não dá certo.
+Dialogue: 0,0:00:36.26,0:00:37.30,Legenda,,0,0,0,,Ah, assim é muito mais fácil.

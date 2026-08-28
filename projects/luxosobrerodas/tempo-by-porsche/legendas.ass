@@ -1,0 +1,113 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Legenda,Liberation Sans,58,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,3,2.2,2,55,55,215,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.18,0:00:03.39,Legenda,,0,0,0,,Então, a gente vende tudo menos carro.
+Dialogue: 0,0:00:03.64,0:00:05.77,Legenda,,0,0,0,,A ideia, a ideia é entregar experiência.
+Dialogue: 0,0:00:10.00,0:00:10.47,Legenda,,0,0,0,,Boa.
+Dialogue: 0,0:00:11.06,0:00:14.37,Legenda,,0,0,0,,Bom, eu sou Adonis Alcice, artista plástico e
+Dialogue: 0,0:00:14.38,0:00:14.95,Legenda,,0,0,0,,aventureiro.
+Dialogue: 0,0:00:15.18,0:00:17.91,Legenda,,0,0,0,,então, eu sou artista, eu sempre gostei de
+Dialogue: 0,0:00:17.92,0:00:21.29,Legenda,,0,0,0,,carro, sempre gostei de artes e sempre gostei
+Dialogue: 0,0:00:21.30,0:00:22.04,Legenda,,0,0,0,,muito de Porsche.
+Dialogue: 0,0:00:22.52,0:00:24.82,Legenda,,0,0,0,,E durante assim, a minha
+Dialogue: 0,0:00:25.00,0:00:27.27,Legenda,,0,0,0,,E aí, o, isso fez com que eu
+Dialogue: 0,0:00:27.28,0:00:29.17,Legenda,,0,0,0,,me aproximasse muito da Porsche.
+Dialogue: 0,0:00:29.18,0:00:30.99,Legenda,,0,0,0,,Mas isso, isso levou vinte anos.
+Dialogue: 0,0:00:31.00,0:00:32.95,Legenda,,0,0,0,,O primeiro desenho que eu vendi, eu tinha
+Dialogue: 0,0:00:32.96,0:00:33.42,Legenda,,0,0,0,,quinze anos.
+Dialogue: 0,0:00:33.60,0:00:34.07,Legenda,,0,0,0,,Entendi.
+Dialogue: 0,0:00:34.08,0:00:35.75,Legenda,,0,0,0,,Aí eu fiz muitos projetos pra marca e
+Dialogue: 0,0:00:35.76,0:00:38.21,Legenda,,0,0,0,,um dia, numa reunião, eles falaram que eles
+Dialogue: 0,0:00:38.22,0:00:41.04,Legenda,,0,0,0,,queriam trazer pro Brasil, um conceito de espaço,
+Dialogue: 0,0:00:41.05,0:00:44.83,Legenda,,0,0,0,,experiência da marca, que tem um muito similar
+Dialogue: 0,0:00:44.84,0:00:45.41,Legenda,,0,0,0,,em Dubai.
+Dialogue: 0,0:00:45.68,0:00:46.23,Legenda,,0,0,0,,Ah.
+Dialogue: 0,0:00:46.24,0:00:48.27,Legenda,,0,0,0,,E foi o, chama Driven by Porsche.
+Dialogue: 0,0:00:48.38,0:00:53.35,Legenda,,0,0,0,,eles falaram: "nossa, legal, quem vai fazer isso?"
+Dialogue: 0,0:00:53.36,0:00:55.03,Legenda,,0,0,0,,Aí eu fiquei apreensivo, curioso.
+Dialogue: 0,0:00:55.30,0:00:56.97,Legenda,,0,0,0,,"Ué, então a gente ainda tá vendo alguém
+Dialogue: 0,0:00:56.98,0:00:58.26,Legenda,,0,0,0,,que..." Eu, eu: "eu".
+Dialogue: 0,0:00:58.46,0:00:58.92,Legenda,,0,0,0,,Foi assim.
+Dialogue: 0,0:00:59.02,0:01:00.84,Legenda,,0,0,0,,Mal sabia eu o tamanho da, da empreita.
+Dialogue: 0,0:01:00.85,0:01:01.18,Legenda,,0,0,0,,Ah,
+Dialogue: 0,0:01:01.36,0:01:01.81,Legenda,,0,0,0,,não é fácil.
+Dialogue: 0,0:01:01.82,0:01:03.61,Legenda,,0,0,0,,Eu, eu achava que ia ser muito café.
+Dialogue: 0,0:01:03.90,0:01:04.84,Legenda,,0,0,0,,Ah, entendi.
+Dialogue: 0,0:01:05.10,0:01:07.37,Legenda,,0,0,0,,Um cafezinho, um ponto, um ponto.
+Dialogue: 0,0:01:07.38,0:01:10.39,Legenda,,0,0,0,,É, uma maquininha de café, uns croissantzinho.
+Dialogue: 0,0:01:10.40,0:01:12.83,Legenda,,0,0,0,,Umas, umas artes, né?
+Dialogue: 0,0:01:12.90,0:01:13.77,Legenda,,0,0,0,,Um café com arte.
+Dialogue: 0,0:01:13.78,0:01:14.55,Legenda,,0,0,0,,Aí virou isso aqui.
+Dialogue: 0,0:01:14.78,0:01:15.14,Legenda,,0,0,0,,Entendi.
+Dialogue: 0,0:01:15.15,0:01:16.30,Legenda,,0,0,0,,Então a Tempo ela é um espaço de
+Dialogue: 0,0:01:16.31,0:01:18.51,Legenda,,0,0,0,,experiência, não é uma concessionária, não é um
+Dialogue: 0,0:01:18.52,0:01:21.15,Legenda,,0,0,0,,restaurante e não é um espaço de evento.
+Dialogue: 0,0:01:21.16,0:01:22.77,Legenda,,0,0,0,,É de experiência.
+Dialogue: 0,0:01:22.78,0:01:24.45,Legenda,,0,0,0,,E aí todas as experiências que a gente
+Dialogue: 0,0:01:24.46,0:01:27.29,Legenda,,0,0,0,,tem ela, basicamente o pilar delas tá na
+Dialogue: 0,0:01:27.78,0:01:28.53,Legenda,,0,0,0,,sabe?
+Dialogue: 0,0:01:28.54,0:01:29.81,Legenda,,0,0,0,,Essa é a, essa é a ideia, essa
+Dialogue: 0,0:01:29.82,0:01:30.47,Legenda,,0,0,0,,é a proposta.
+Dialogue: 0,0:01:30.48,0:01:32.45,Legenda,,0,0,0,,Não é só pra quem tem Porsche e
+Dialogue: 0,0:01:32.46,0:01:33.81,Legenda,,0,0,0,,não precisa gostar de carro.
+Dialogue: 0,0:01:33.82,0:01:34.27,Legenda,,0,0,0,,Entendi.
+Dialogue: 0,0:01:34.28,0:01:36.44,Legenda,,0,0,0,,Só precisa gostar de encontrar pessoas.
+Dialogue: 0,0:01:36.52,0:01:36.91,Legenda,,0,0,0,,Eu não
+Dialogue: 0,0:01:37.09,0:01:37.34,Legenda,,0,0,0,,Ah, entendi.
+Dialogue: 0,0:01:37.35,0:01:39.01,Legenda,,0,0,0,,Mas a ideia é que sempre tenha um
+Dialogue: 0,0:01:39.02,0:01:42.13,Legenda,,0,0,0,,carro muito especial, algum carro muito icônico, tipo
+Dialogue: 0,0:01:42.14,0:01:44.23,Legenda,,0,0,0,,esse Carrera RS que tá aqui, setenta e
+Dialogue: 0,0:01:44.24,0:01:44.79,Legenda,,0,0,0,,três, né?
+Dialogue: 0,0:01:45.02,0:01:47.05,Legenda,,0,0,0,,Do, do, dos RS que tem, o setenta
+Dialogue: 0,0:01:47.06,0:01:47.21,Legenda,,0,0,0,,e três
+Dialogue: 0,0:01:47.35,0:01:50.91,Legenda,,0,0,0,,no mundo, os Carrera RS mais especiais são
+Dialogue: 0,0:01:50.92,0:01:51.78,Legenda,,0,0,0,,os do Brasil.
+Dialogue: 0,0:01:51.79,0:01:52.18,Legenda,,0,0,0,,Olha.
+Dialogue: 0,0:01:52.19,0:01:55.56,Legenda,,0,0,0,,Porque na época, as encomendas que eram feitas,
+Dialogue: 0,0:01:55.57,0:01:57.30,Legenda,,0,0,0,,porque é basicamente o carro de corrida.
+Dialogue: 0,0:01:57.31,0:01:57.55,Legenda,,0,0,0,,Olha.
+Dialogue: 0,0:01:57.56,0:01:59.62,Legenda,,0,0,0,,Então o pessoal comprava assim, sem teto solar,
+Dialogue: 0,0:01:59.83,0:02:01.76,Legenda,,0,0,0,,sem ar-condicionado, sem nada.
+Dialogue: 0,0:02:01.77,0:02:02.32,Legenda,,0,0,0,,Verdade.
+Dialogue: 0,0:02:02.33,0:02:03.74,Legenda,,0,0,0,,E os do Brasil são completos.
+Dialogue: 0,0:02:04.59,0:02:05.80,Legenda,,0,0,0,,Ah, veio com tudo?
+Dialogue: 0,0:02:05.81,0:02:06.12,Legenda,,0,0,0,,Tudo.
+Dialogue: 0,0:02:06.20,0:02:08.54,Legenda,,0,0,0,,Então, no mundo, os mais valiosos que existem
+Dialogue: 0,0:02:08.55,0:02:09.21,Legenda,,0,0,0,,são os brasileiros.
+Dialogue: 0,0:02:10.10,0:02:11.86,Legenda,,0,0,0,,Então fazia uma experiência pra, só pra ela
+Dialogue: 0,0:02:11.87,0:02:13.93,Legenda,,0,0,0,,ser bonita, pra ela ser instagramável e todo
+Dialogue: 0,0:02:13.94,0:02:15.87,Legenda,,0,0,0,,mundo vinha, postava e acabou.
+Dialogue: 0,0:02:16.90,0:02:17.49,Legenda,,0,0,0,,Entendi.
+Dialogue: 0,0:02:17.78,0:02:19.65,Legenda,,0,0,0,,É, continuava sendo muito frio.
+Dialogue: 0,0:02:19.66,0:02:22.57,Legenda,,0,0,0,,Então eu criei um espaço pra ser um
+Dialogue: 0,0:02:22.58,0:02:24.21,Legenda,,0,0,0,,espaço de conexão.
+Dialogue: 0,0:02:24.22,0:02:24.57,Legenda,,0,0,0,,Tá.
+Dialogue: 0,0:02:24.80,0:02:26.65,Legenda,,0,0,0,,Acontece de ser by Porsche e ter um
+Dialogue: 0,0:02:26.66,0:02:27.49,Legenda,,0,0,0,,Porsche aqui dentro.
+Dialogue: 0,0:02:27.50,0:02:29.57,Legenda,,0,0,0,,Mas eu quero fazer evento, por exemplo, de
+Dialogue: 0,0:02:29.58,0:02:30.07,Legenda,,0,0,0,,moda.
+Dialogue: 0,0:02:30.08,0:02:31.57,Legenda,,0,0,0,,Eu quero fazer um desfile aqui.
+Dialogue: 0,0:02:31.58,0:02:34.69,Legenda,,0,0,0,,Quero fazer um evento de yoga com brunch.
+Dialogue: 0,0:02:34.70,0:02:35.12,Legenda,,0,0,0,,Eu quero
+Dialogue: 0,0:02:35.30,0:02:38.85,Legenda,,0,0,0,,A gente tá na Rebouças com Maria Carolina.
+Dialogue: 0,0:02:38.86,0:02:41.57,Legenda,,0,0,0,,Então, rua Maria Carolina, meia dois quatro.
+Dialogue: 0,0:02:41.58,0:02:43.39,Legenda,,0,0,0,,É só colocar Tempo by Porsche no, no
+Dialogue: 0,0:02:43.40,0:02:45.03,Legenda,,0,0,0,,Google que vai, vai encontrar.
+Dialogue: 0,0:02:45.04,0:02:46.17,Legenda,,0,0,0,,Aberto todos os dias.
+Dialogue: 0,0:02:46.18,0:02:46.64,Legenda,,0,0,0,,Não, mas tem uma
+Dialogue: 0,0:02:46.82,0:02:49.62,Legenda,,0,0,0,,Hum, hum, bom, gente.
+Dialogue: 0,0:02:49.63,0:02:50.78,Legenda,,0,0,0,,Não pode falar com a boca cheia, né?
+Dialogue: 0,0:02:50.95,0:02:51.72,Legenda,,0,0,0,,Não.
+Dialogue: 0,0:02:52.02,0:02:52.79,Legenda,,0,0,0,,Bom.
+Dialogue: 0,0:02:52.80,0:02:53.89,Legenda,,0,0,0,,Eu recomendo.
+Dialogue: 0,0:02:54.20,0:02:54.81,Legenda,,0,0,0,,Hum.
+Dialogue: 0,0:02:55.30,0:02:56.53,Legenda,,0,0,0,,É isso, né, gente?
