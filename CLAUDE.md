@@ -35,8 +35,10 @@ Nenhum deles aceita chave por argumento: linha de comando vaza em histórico de 
 | Variável | Para quê | Como conferir o escopo |
 |---|---|---|
 | `ELEVENLABS_API_KEY` | TTS, STT (Scribe) e `sound-generation` | chamar o endpoint com parâmetro inválido: `401 missing_permissions` = escopo ausente; `400`/`404` = escopo presente |
-| `OPENAI_API_KEY` | geração de imagem | `curl https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY"` |
-| `GEMINI_API_KEY` | geração de imagem | `curl https://generativelanguage.googleapis.com/v1beta/models -H "x-goog-api-key: $GEMINI_API_KEY"` |
+| `OPENAI_API_KEY` | geração de imagem | `python3 scripts/gera_imagem.py --listar` |
+| `GEMINI_API_KEY` | geração de imagem | `python3 scripts/gera_imagem.py --listar` |
+
+Modelos de imagem disponíveis nestas contas (conferido em 18/set/2026, as duas com quota real): OpenAI `gpt-image-2.5-sunburst`, `gpt-image-2.5-flare`, `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1-mini`; Gemini `gemini-3-pro-image`, `gemini-3.1-flash-image`, `gemini-3.1-flash-lite-image`, `gemini-2.5-flash-image`. Para b-roll que entra no vídeo, usar os pro; os mini servem para teste.
 
 Três armadilhas já pagas com tempo:
 
@@ -46,12 +48,13 @@ Três armadilhas já pagas com tempo:
 
 ## Rede do environment
 
-Hosts que o cinto de ferramentas exige na allowlist: `api.elevenlabs.io`, `api.openai.com`, `generativelanguage.googleapis.com`, `www.googleapis.com`, `drive.google.com`, `drive.usercontent.google.com`, `pypi.org`, `files.pythonhosted.org`, `registry.npmjs.org`, `api.github.com` e GitHub Releases.
+Hosts que o cinto de ferramentas exige na allowlist: `api.elevenlabs.io`, `api.openai.com`, `generativelanguage.googleapis.com`, `www.googleapis.com`, `drive.google.com`, `drive.usercontent.google.com`, `pypi.org`, `files.pythonhosted.org`, `registry.npmjs.org`, `cdn.jsdelivr.net`, `api.github.com` e GitHub Releases.
 
 - **A allowlist é literal por subdomínio.** `www.googleapis.com` não cobre `generativelanguage.googleapis.com`. Para um site inteiro, usar `*.dominio.com` junto do apex.
-- **Diagnóstico em um comando**: `curl -sv https://host/ 2>&1 | grep CONNECT`. `HTTP/1.1 403` no CONNECT é allowlist; qualquer outra resposta significa que a rede passou e o problema é outro (chave, quota, rota).
+- **Diagnóstico em um comando**: `curl -sv https://host/ 2>&1 | grep CONNECT`. `HTTP/1.1 403` no CONNECT é allowlist; qualquer outra resposta significa que a rede passou e o problema é outro (chave, quota, rota). Cuidado com falso alarme na raiz: `api.openai.com/` devolve **HTTP 421** mesmo liberado, e `generativelanguage.googleapis.com` devolve **403 do próprio Google** por falta de chave. Os dois passam no CONNECT; o que vale é a linha do CONNECT, não o status final.
 - `raw.githubusercontent.com` não precisa ser liberado: o `setup.sh` registra as skills do hyperframes a partir do clone local quando o `npx ... skills update` falha.
 - **Chromium não contorna a allowlist.** O headless usa o mesmo agent proxy e devolve `ERR_TUNNEL_CONNECTION_FAILED` no host que o `curl` recusa. Navegador só ajuda contra JS/SPA, nunca contra egresso bloqueado.
+- **Liberar o host não basta para o Chrome: falta confiar na CA do proxy.** O agent proxy intercepta TLS com CA própria. O `curl` confia por causa do `SSL_CERT_FILE`, mas o Chrome usa o NSS db em `~/.pki/nssdb` e **ignora o store do sistema**, então todo fetch de CDN de dentro da página morre com `ERR_CERT_AUTHORITY_INVALID`. O passo 4 do `setup.sh` importa só as CAs da Anthropic para o NSS db e resolve. Sintoma clássico: `hyperframes check` acusa `request_failed` no gsap e depois `gsap is not defined`, enquanto o `hyperframes render` passa (ele resolve o script fora do browser). Conferir com `certutil -d sql:$HOME/.pki/nssdb -L | grep -c anthropic`.
 
 ## Gotchas essenciais (detalhe completo em FRAMEWORK.md)
 
@@ -77,6 +80,13 @@ Hosts que o cinto de ferramentas exige na allowlist: `api.elevenlabs.io`, `api.o
 - **Processo em background com `nohup`/`setsid` é recolhido quando a tool call retorna.** Usar `run_in_background: true` da própria ferramenta Bash, que o harness rastreia, ou deixar estourar o timeout do primeiro plano. Em lote longo, `flock` num arquivo de lock evita a corrida de dois loops escrevendo o mesmo arquivo.
 - **Ler o índice de um ZIP gigante no Drive sem baixar o arquivo.** `drive.usercontent.google.com` aceita `Range`: pegar os últimos ~64 KB, achar o EOCD (`PK\x05\x06`) e, em arquivo maior que 4 GB, o ZIP64 EOCD via locator `PK\x06\x07`, ler o central directory e listar tudo. Com entradas `method=0` (stored), cada arquivo sai sozinho por outro `Range` no offset do local header. Evita baixar 11 GB para pegar um vídeo de 90 MB. Script: `scripts/zip_index_remoto.py`.
 - Mac: usar ffmpeg-full keg-only com PATH explícito. Linux: ffmpeg do apt já serve.
+
+### HyperFrames
+
+- **Toda composição puxa o GSAP de `cdn.jsdelivr.net`.** Sem o host na allowlist, o render é barrado com `sub_timeline_script_failure` e o HyperFrames se recusa a entregar o arquivo, o que é o comportamento certo: a timeline nunca rodou. Workaround sem mexer em rede, se um dia faltar: `npm i gsap@<versão>`, copiar `node_modules/gsap/dist/gsap.min.js` para a raiz do projeto e trocar a tag `<script src>` pelo caminho local.
+- **`hyperframes doctor` dá falso negativo no ffmpeg.** Diz "Failed to run /usr/local/bin/ffmpeg -version" com o binário funcionando (`rc=0`), e na mesma tela imprime `✓ FFprobe   Failed to run`, check verde em linha de falha. Não diagnosticar ffmpeg por ele; rodar `ffmpeg -version` à mão.
+- **Container recém-criado derruba as sondas do HyperFrames.** No primeiro minuto de vida (`uptime` diz `up 1 min`), `chrome-headless-shell --version` estoura timeout e o CLI conclui "Chrome cannot start". Não é instalação quebrada: esperar e repetir resolve. Conferir `uptime` antes de reinstalar qualquer coisa.
+- **"Timeline did not advance under seek" no projeto recém-criado é esperado.** O template blank do `hyperframes init` monta `gsap.timeline({ paused: true })` com o único tween comentado como exemplo. Timeline vazia não avança, e o check acusa. Descomentar o tween (ou escrever a animação de verdade) deixa o check verde.
 
 ### Publicação
 

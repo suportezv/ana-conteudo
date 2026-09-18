@@ -20,7 +20,7 @@ if [ -n "${HTTPS_PROXY:-}" ]; then
   export npm_config_noproxy="" npm_config_cafile="$SSL_CERT_FILE"
 fi
 
-echo "== 1/6 ffmpeg =="
+echo "== 1/7 ffmpeg =="
 # No cloud com network Custom o apt fica bloqueado (403 no archive.ubuntu.com), então
 # o caminho confiável é o build estático do BtbN via GitHub Releases, que o proxy libera.
 # O build "gpl" traz libass (subtitles) e zimg (zscale), ambos obrigatórios aqui.
@@ -64,7 +64,7 @@ if ! command -v ffmpeg >/dev/null; then
 fi
 ffmpeg -version 2>/dev/null | head -1 || true
 
-echo "== 2/6 video-use =="
+echo "== 2/7 video-use =="
 if [ ! -d "$VIDEO_USE/.git" ]; then
   GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/browser-use/video-use "$VIDEO_USE" || { echo "AVISO: clone do video-use falhou"; }
 fi
@@ -84,7 +84,7 @@ fi
 mkdir -p ~/.claude/skills
 ln -sfn "$VIDEO_USE" ~/.claude/skills/video-use
 
-echo "== 3/6 hyperframes + media-use =="
+echo "== 3/7 hyperframes + media-use =="
 if [ ! -d "$HYPERFRAMES/.git" ]; then
   GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/heygen-com/hyperframes "$HYPERFRAMES" || { echo "AVISO: clone do hyperframes falhou"; }
 fi
@@ -105,7 +105,45 @@ if ! npx --yes hyperframes skills update 2>/dev/null; then
   echo "$n skills do hyperframes registradas a partir de $HYPERFRAMES/skills"
 fi
 
-echo "== 4/6 Remotion =="
+echo "== 4/7 CA do proxy para o Chrome =="
+# O agent proxy intercepta TLS com CA propria. O curl confia por causa do
+# SSL_CERT_FILE, mas o Chrome nao: ele usa o NSS db em ~/.pki/nssdb, ignora o
+# store do sistema, e qualquer fetch de CDN de dentro da pagina morre com
+# ERR_CERT_AUTHORITY_INVALID. Sintoma tipico: "hyperframes check" acusa
+# request_failed no gsap do cdn.jsdelivr.net e depois "gsap is not defined".
+# O render passa (resolve o script fora do browser), o check nao.
+CA_BUNDLE="${SSL_CERT_FILE:-/root/.ccr/ca-bundle.crt}"
+if [ -f "$CA_BUNDLE" ]; then
+  command -v certutil >/dev/null || apt-get install -y -qq libnss3-tools 2>/dev/null || true
+  if command -v certutil >/dev/null; then
+    mkdir -p "$HOME/.pki/nssdb"
+    certutil -d "sql:$HOME/.pki/nssdb" -L >/dev/null 2>&1       || certutil -d "sql:$HOME/.pki/nssdb" -N --empty-password >/dev/null 2>&1
+    # So as CAs de interceptacao da Anthropic; as 148 raizes publicas do bundle
+    # o Chrome ja traz embutidas e importa-las so polui o db.
+    tmp_ca="$(mktemp -d)"
+    csplit -z -s -f "$tmp_ca/c-" -b '%03d.pem' "$CA_BUNDLE" '/BEGIN CERTIFICATE/' '{*}' 2>/dev/null || true
+    n=0
+    for f in "$tmp_ca"/c-*.pem; do
+      [ -f "$f" ] || continue
+      case "$(openssl x509 -in "$f" -noout -subject 2>/dev/null)" in
+        *Anthropic*)
+          certutil -d "sql:$HOME/.pki/nssdb" -A -t "C,," -n "anthropic-proxy-$(basename "$f" .pem)" -i "$f" 2>/dev/null && n=$((n+1)) ;;
+      esac
+    done
+    rm -rf "$tmp_ca"
+    if [ "$n" -gt 0 ]; then
+      echo "$n CAs do proxy confiaveis para o Chrome (~/.pki/nssdb)"
+    else
+      echo "AVISO: nenhuma CA do proxy importada; o Chrome vai recusar CDN (ERR_CERT_AUTHORITY_INVALID)"
+    fi
+  else
+    echo "AVISO: certutil indisponivel; o Chrome nao vai confiar na CA do proxy"
+  fi
+else
+  echo "CA do proxy nao encontrada em $CA_BUNDLE; passo pulado (provavel Mac/local)"
+fi
+
+echo "== 5/7 Remotion =="
 # O Remotion e React; as composicoes ficam versionadas em remotion/ e so as
 # dependencias sao instaladas aqui. O render usa o headless_shell do Playwright
 # (ver remotion/remotion.config.ts).
@@ -119,12 +157,12 @@ else
   echo "remotion/package.json ausente; passo pulado"
 fi
 
-echo "== 5/6 Python (PIL para overlays, numpy para batidas) =="
+echo "== 6/7 Python (PIL para overlays, numpy para batidas) =="
 python3 -c 'import PIL' 2>/dev/null || pip3 install pillow || echo "AVISO: pillow não instalado (pypi bloqueado). Lettering/overlays indisponíveis."
 python3 -c 'import numpy' 2>/dev/null || pip3 install numpy || echo "AVISO: numpy não instalado (pypi bloqueado). Detecção de batidas indisponível."
 python3 -c 'import colour' 2>/dev/null || pip3 install colour-science || echo "AVISO: colour-science não instalada (pypi bloqueado). scripts/gera_lut_slog2.py indisponível."
 
-echo "== 6/6 estúdio =="
+echo "== 7/7 estúdio =="
 ln -sfn "$REPO_ROOT" ~/eita-reels-studio
 echo "~/eita-reels-studio -> $REPO_ROOT"
 
