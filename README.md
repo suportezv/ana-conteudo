@@ -6,15 +6,16 @@ Estúdio de edição e agendamento de reels para **@anaclaudia.eita** (Instagram
 - **`SETUP.md`**: como montar o estúdio numa máquina nova (Mac ou Linux/cloud).
 - **`projects/`**: um subdiretório por vídeo (bruto, briefing, transcrição, renders, caption).
 - **`assets/fonts/`**: fontes do lettering (Helvetica Neue Condensed Black; copiar de um Mac).
-- **`patches/`**: patches conhecidos para as ferramentas (video-use).
-- **`scripts/`**: setup automatizado e validação.
+- **`patches/`**: histórico de patches das ferramentas. Nada aqui é obrigatório hoje; ver `FRAMEWORK.md`.
+- **`scripts/`**: setup, validação e o cinto de ferramentas (decupagem por texto, LUT de S-Log2, índice remoto de ZIP, geração de imagem, upload para o Drive).
+- **`remotion/`**: composições React para peças de motion. Paleta e fonte só em `remotion/src/marca.ts`.
 
 ## Uso rápido
 
 Numa sessão nova, na raiz deste repositório:
 
 ```bash
-bash scripts/setup.sh      # instala ffmpeg, video-use, hyperframes, aplica patches
+bash scripts/setup.sh      # ffmpeg, video-use, hyperframes, Remotion e deps Python
 bash scripts/validate.sh   # roda as validações
 ```
 

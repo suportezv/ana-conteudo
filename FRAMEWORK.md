@@ -24,6 +24,23 @@ Estúdio de edição e agendamento de reels para o perfil Instagram **@anaclaudi
 
 Sempre que o bruto permitir, **hibridizar educação com humor**.
 
+## Escolha do framework de motion: HyperFrames ou Remotion
+
+O estúdio mantém os dois, e a escolha **não é preferência do momento**: cada peça declara o seu no `BRIEFING.md`, na primeira linha. Sem isso, quem pegar o projeto depois não sabe onde mexer.
+
+**O que decide**: a ponte entre os dois só existe num sentido. Há a skill `remotion-to-hyperframes`; **não existe o inverso**. Então peça feita em HyperFrames é definitiva, e peça feita em Remotion ainda pode migrar. Na dúvida, Remotion é a aposta reversível.
+
+| Use **HyperFrames** quando | Use **Remotion** quando |
+|---|---|
+| É peça da série recorrente, na gramática já documentada | A peça é exceção, fora do padrão da série |
+| Você quer o fluxo pronto: brief, storyboard, registry de ~400 blocos, legendas, áudio, render em nuvem | A composição precisa de lógica de programação, dados ou parametrização |
+| O visual pedido já existe no registry (scanlines, glitch, gráfico, janela de terminal) | Você vai gerar **N variações** da mesma peça mudando nome, número ou idioma |
+| Ninguém vai reprocessar a peça em outro framework | Há chance real de a peça mudar de destino depois |
+
+**Padrão declarado: HyperFrames.** É o que está integrado ao fluxo do estúdio e o que tem as skills registradas. O Remotion entra por decisão consciente, não por inércia.
+
+**Custo de manter os dois, para vigiar**: dois `node_modules`, dois caminhos de render e dois lugares onde a paleta pode divergir. O terceiro está mitigado, porque os tokens do Remotion vivem só em `remotion/src/marca.ts`, mas **se a paleta da marca mudar, atualizar os dois lados**. Se em alguns meses o Remotion não tiver sido usado em nada, ele vira peso morto e se corta; o inverso não vale, porque o HyperFrames é o que sustenta o fluxo.
+
 ## Assinaturas de edição
 
 - Hook verbal + título na tela nos **2 primeiros segundos**.
@@ -114,9 +131,13 @@ O catálogo do media-use exige login HeyGen (interativo). Sem ele, gerar bed via
 - **Mac**: `brew install ffmpeg-full` (a fórmula `ffmpeg` normal vem SEM libass/zscale). Keg-only: todo render deve rodar com `PATH=/opt/homebrew/opt/ffmpeg-full/bin:$PATH`.
 - **Linux (apt)**: o pacote `ffmpeg` padrão do Ubuntu/Debian já inclui `subtitles` (libass), `zscale`, `zoompan` e `colorspace`. Nenhum PATH especial necessário.
 
-### video-use: patch conhecido
+### video-use: orientação de origem (patch aposentado)
 
-Em `video-use/helpers/render.py`, a função `is_portrait_source` quebra com ffprobe que emite CSV com vírgula final ("1080,1920,"): filtrar campos vazios antes do `map(int, ...)`, senão vídeos verticais são tratados como paisagem e os overlays desalinham. Patch pronto em `patches/video-use-is-portrait-source.patch`.
+`is_portrait_source`, em `video-use/helpers/render.py`, decide se o bruto é vertical. Errar aqui faz vídeo vertical sair em paisagem e desalinha todos os overlays.
+
+O patch local `patches/video-use-is-portrait-source.patch` resolvia um caso só (ffprobe que emite CSV com vírgula final, "1080,1920,"). O upstream depois reescreveu a função para ler também o `rotation` do side data, o que cobre mais casos, inclusive a câmera que grava em pé sem gravar a flag. O patch fica no repo como histórico, mas **não aplicar por padrão**.
+
+O que vale conferir é o comportamento, não a presença do patch: `scripts/validate.sh` gera retrato, paisagem e paisagem com matriz de rotação 90 e confere as três respostas.
 
 ### Fonte
 

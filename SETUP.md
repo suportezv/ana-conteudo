@@ -18,7 +18,7 @@ git clone https://github.com/heygen-com/hyperframes <destino>/hyperframes
 ```
 
 - **video-use**: siga o `install.md` do repo (`uv sync`, symlink do repo inteiro para `~/.claude/skills/video-use`).
-- **Patch obrigatório**: aplique `patches/video-use-is-portrait-source.patch` no video-use (ffprobe de alguns builds emite CSV com vírgula final e vídeos verticais viram paisagem sem o patch).
+- **Patch de orientação: não aplicar.** O `patches/video-use-is-portrait-source.patch` foi aposentado; o upstream reescreveu `is_portrait_source` e cobre mais casos. O `scripts/validate.sh` confere o comportamento (retrato, paisagem e paisagem com matriz de rotação 90).
 - **hyperframes + media-use**: `npx --yes hyperframes skills update` instala o core set de skills (requer Node 22+).
 
 ## 3. ElevenLabs
